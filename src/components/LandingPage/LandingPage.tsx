@@ -9,7 +9,7 @@ interface Props {
     objectState: JSONState;
 }
 
-const LandingPage = ({objectState}: Props): ReactElement => {
+const LandingPage = ({ objectState }: Props): ReactElement => {
     return (
         <div>
             <HeroSection heroImage={objectState?.heroImage || null} />

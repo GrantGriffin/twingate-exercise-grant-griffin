@@ -48,7 +48,7 @@ function App() {
    * @returns {void} sets state based on JSONState type
    */
   const handleJSON = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    
+
     try {
       const inputData = JSON.parse(e.target.value)
       // handle validation and set state or display error message.
@@ -76,7 +76,7 @@ function App() {
           throw new Error("Error parsing JSON.  Must contain only one hero type object, and only one data type object.  Accepted objects: hero, image-text, and data")
         }
       })
-      setState({...outputData})
+      setState({ ...outputData })
 
     } catch (error) {
       alert(error.message)
@@ -85,10 +85,10 @@ function App() {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', margin: '8px', padding: '4px' }}>
-      <div style={{maxWidth: '50%'}}>
+      <div style={{ maxWidth: '50%' }}>
         <Editor handleJSON={handleJSON} />
       </div>
-      <div style={{maxWidth: '50%'}}>
+      <div style={{ maxWidth: '50%' }}>
         <LandingPage objectState={state} />
       </div>
     </div>
