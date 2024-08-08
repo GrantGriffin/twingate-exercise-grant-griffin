@@ -14,24 +14,30 @@ const DataSection = ({data}: Props) => {
             
             if(data?.url) {
                 const result = await fetch(data.url)
-                console.log(result)
+                console.log('RES', result)
                 const output = await result.json()
-                setDataOutput(output)
+                console.log('JSON?', output)
+                
+                const stringOutput = JSON.stringify(output);
+                setDataOutput(stringOutput)
             }
         } catch (error) {
             console.log('FETCH FAILED')
         }
     }
-// add refetch -- intentionally left deps empty for mount behavior
+    // attempt a fetch when data changes
     useEffect( () => {
         fetchData()
-    }, [])
+    }, [data])
 
     return (
-        <div>
-            <div>Data</div>
+        <div style={{margin: '8px', padding: '4px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+            <h3>Data</h3>
+            <button style={{height: '50%', margin: 'auto'}} onClick={fetchData}>refetch</button>
+            </div>
             <div>{dataOutput}</div>
-            <button onClick={fetchData}>refetch</button>
+            
         </div>
 
     )

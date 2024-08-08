@@ -12,6 +12,6 @@
     },
     {
         "type": "data",
-        "url": "https://api.publicapis.org/entries"
+        "url": "https://api.apis.guru/v2/list.json"
     }
 ]

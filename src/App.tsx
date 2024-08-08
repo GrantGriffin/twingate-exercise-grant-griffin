@@ -43,12 +43,12 @@ function App() {
 
   const handleJSON = (e: React.ChangeEvent<HTMLInputElement>): void => {
     console.log(e.target.value)
-    const inputData = JSON.parse(e.target.value)
-    // handle validation and set state or display error message.
-
+    
     try {
+      const inputData = JSON.parse(e.target.value)
+      // handle validation and set state or display error message.
       if (!inputData.length) {
-        throw new Error("error in json data: not array type")
+        throw new Error("error in json data: not array type or is empty")
       }
       const outputData: JSONState = { ...initialState }
 
@@ -63,7 +63,7 @@ function App() {
           outputData.data = obj
         }
         else {
-          throw new Error("Error parsing object.  Must contain only one hero type object, and only one data type object.  Accepted objects: hero, image-text, and data")
+          throw new Error("Error parsing JSON.  Must contain only one hero type object, and only one data type object.  Accepted objects: hero, image-text, and data")
         }
       })
       console.log('OUTPUT DATA', outputData)
