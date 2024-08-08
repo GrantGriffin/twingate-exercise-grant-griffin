@@ -41,6 +41,12 @@ function App() {
   }
   const [state, setState] = useState<JSONState>(initialState)
 
+
+  /**
+   *  attempts to parse JSON data and displays an alert in case of failure
+   * @param e text change event
+   * @returns {void} sets state based on JSONState type
+   */
   const handleJSON = (e: React.ChangeEvent<HTMLInputElement>): void => {
     
     try {
@@ -51,17 +57,22 @@ function App() {
       }
       const outputData: JSONState = { ...initialState }
 
+      // iterate over json array
       inputData.forEach((obj: InputObjectType) => {
+        // allow only one hero object
         if (obj.type === 'hero' && outputData.heroImage === null) {
           outputData.heroImage = obj
         }
+        // allow multiple image text objects
         else if (obj.type === 'image-text') {
           outputData.imageText.push(obj)
         }
+        // allow only one data object
         else if (obj.type === 'data' && outputData.data === null) {
           outputData.data = obj
         }
         else {
+          // throw on objects that don't fit expected model
           throw new Error("Error parsing JSON.  Must contain only one hero type object, and only one data type object.  Accepted objects: hero, image-text, and data")
         }
       })
@@ -78,7 +89,6 @@ function App() {
         <Editor handleJSON={handleJSON} />
       </div>
       <div style={{maxWidth: '50%'}}>
-        {/* state spreading here makes me a bit uncomfortable, but it's taking just the whole typed object */}
         <LandingPage objectState={state} />
       </div>
     </div>
