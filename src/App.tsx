@@ -75,11 +75,11 @@ function App() {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <div style={{width: '45%'}}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', margin: '8px', padding: '4px' }}>
+      <div style={{maxWidth: '50%'}}>
         <Editor handleJSON={handleJSON} />
       </div>
-      <div style={{width: '45%'}}>
+      <div style={{maxWidth: '50%'}}>
         {/* state spreading here makes me a bit uncomfortable, but it's taking just the whole typed object */}
         <LandingPage objectState={state} />
       </div>

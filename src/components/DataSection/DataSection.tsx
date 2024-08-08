@@ -32,11 +32,13 @@ const DataSection = ({data}: Props) => {
 
     return (
         <div style={{margin: '8px', padding: '4px'}}>
+            <hr/>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <h3>Data</h3>
-            <button style={{height: '50%', margin: 'auto'}} onClick={fetchData}>refetch</button>
+                <div style={{fontWeight: 'bold'}}>Data</div>
+                <button style={{height: '50%', margin: '0'}} onClick={fetchData}>refetch</button>
             </div>
-            <div>{dataOutput}</div>
+            <hr />
+            <div style={{height: '200px', overflow: 'auto', border: "1px solid black", borderRadius: '5px', padding: '8px'}}>{dataOutput}</div>
             
         </div>
 

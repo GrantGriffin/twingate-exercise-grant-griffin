@@ -7,31 +7,40 @@ interface Props {
 
 const ImageTextSection = ({imageText}: Props) => {
     console.log("image text", imageText)
-    if(!imageText?.length) {
-        return <div>no images to display</div>
-    }
-    return imageText.map((imageTextItem: ImageText) => {
-        if (imageTextItem.leftToRight) {
+
+    const imageList = (): JSX.Element[] => {
+        return imageText.map((imageTextItem: ImageText) => {
+            if (imageTextItem.leftToRight) {
+                return (
+                    <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', marginBottom: '4px', border: '1px solid black', borderRadius: '5px'}}>
+                        <img height={64} src={imageTextItem.imageURI} alt={imageTextItem.title} />
+                        <div style={{width: '100%', padding: '8px', textAlign: 'right'}}>
+                            <div style={{fontWeight: 'bold'}}>{imageTextItem.title}</div>
+                            <div>{imageTextItem.text}</div>
+                        </div>
+                    </div>
+                )
+            }
             return (
-                <div style={{display: 'flex'}}>
-                    <img height={250} src={imageTextItem.imageURI} alt={imageTextItem.title} />
-                    <div>
-                        <h3>{imageTextItem.title}</h3>
+                <div style={{display: 'flex', width: '100%', justifyContent: 'space-between', marginBottom: '4px', border: '1px solid black', borderRadius: '5px'}}>
+                    <div style={{width: '100%', padding: '8px'}}>
+                        <div style={{fontWeight: 'bold'}}>{imageTextItem.title}</div>
                         <div>{imageTextItem.text}</div>
                     </div>
+                    <img height={64} src={imageTextItem.imageURI} alt={imageTextItem.title} />
                 </div>
             )
+        })
+    }
+
+    return (
+        <div style={{maxHeight: '300px', overflow: 'auto', margin: '8px', padding: '4px'}}>
+            {!imageText.length ? (
+                <div>no images to display</div>
+            ) : imageList()
         }
-        return (
-            <div style={{display: 'flex', width: '100%'}}>
-                <div style={{width: '100%'}}>
-                    <h3>{imageTextItem.title}</h3>
-                    <div>{imageTextItem.text}</div>
-                </div>
-                <img height={250} src={imageTextItem.imageURI} alt={imageTextItem.title} />
-            </div>
-        )
-    })
+        </div>
+    )
 
 }
 

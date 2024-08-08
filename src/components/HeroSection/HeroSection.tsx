@@ -12,8 +12,8 @@ const HeroSection= ({heroImage}: Props): ReactElement => {
     }
 
     return (
-        <div>
-            <img style={{width: '100%', objectFit: 'cover'}} height={150} src={heroImage?.imageURI || ""} alt="some hero" />
+        <div style={{margin: '12px', border: "1px solid black", borderRadius: '5px', height: '86px'}}>
+            <img style={{width: '100%', objectFit: 'cover', margin: 0}} height={86} src={heroImage?.imageURI || ""} alt="some hero" />
         </div>
     )
 }
