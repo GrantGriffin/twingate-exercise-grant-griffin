@@ -6,7 +6,6 @@ interface Props {
 }
 
 const ImageTextSection = ({imageText}: Props) => {
-    console.log("image text", imageText)
 
     const imageList = (): JSX.Element[] => {
         return imageText.map((imageTextItem: ImageText) => {

@@ -14,15 +14,13 @@ const DataSection = ({data}: Props) => {
             
             if(data?.url) {
                 const result = await fetch(data.url)
-                console.log('RES', result)
                 const output = await result.json()
-                console.log('JSON?', output)
                 
                 const stringOutput = JSON.stringify(output);
                 setDataOutput(stringOutput)
             }
         } catch (error) {
-            console.log('FETCH FAILED')
+            alert('FETCH FAILED')
         }
     }
     // attempt a fetch when data changes

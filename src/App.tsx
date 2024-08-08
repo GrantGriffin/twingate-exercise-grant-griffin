@@ -42,7 +42,6 @@ function App() {
   const [state, setState] = useState<JSONState>(initialState)
 
   const handleJSON = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log(e.target.value)
     
     try {
       const inputData = JSON.parse(e.target.value)
@@ -66,7 +65,6 @@ function App() {
           throw new Error("Error parsing JSON.  Must contain only one hero type object, and only one data type object.  Accepted objects: hero, image-text, and data")
         }
       })
-      console.log('OUTPUT DATA', outputData)
       setState({...outputData})
 
     } catch (error) {

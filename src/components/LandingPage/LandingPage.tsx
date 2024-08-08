@@ -10,7 +10,6 @@ interface Props {
 }
 
 const LandingPage = ({objectState}: Props): ReactElement => {
-    console.log('OBJECT STATE', objectState)
     return (
         <div>
             <HeroSection heroImage={objectState?.heroImage || null} />
